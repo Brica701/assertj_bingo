@@ -161,4 +161,123 @@ public class ArraysTest {
         assertArrayEquals(resultadoEsperado, resultadoObtenido);
     }
 
+    @Test
+    void testOrdenarArrayDesordenado() {
+        int[] array = {3, 1, 5, 2, 4};
+        int[] esperado = {1, 2, 3, 4, 5};
+        int[] resultado = UtilesArrays.ordenar(array);
+        assertArrayEquals(esperado, resultado);
+    }
+
+    @Test
+    void testDesordenar() {
+        int[] array = {1, 2, 3, 4, 5};
+        int[] arrayOriginal = Arrays.copyOf(array, array.length);
+        UtilesArrays.desordenar(array);
+
+        assertNotEquals(Arrays.toString(arrayOriginal), Arrays.toString(array));
+    }
+
+    @Test
+    void testInvertirArray() {
+        int[] array = {1, 2, 3, 4, 5};
+        int[] esperado = {5, 4, 3, 2, 1};
+        int[] resultado = UtilesArrays.invertir(array);
+        assertArrayEquals(esperado, resultado);
+    }
+
+    @Test
+    void testImprimirArray() {
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        int[] array = {1, 2, 3, 4, 5};
+        UtilesArrays.imprimir(array);
+
+        assertEquals("\t[1, 2, 3, 4, 5]\n", outputStreamCaptor.toString());
+    }
+
+    @Test
+    void testArrayOrdenadoAscendente() {
+        int[] array = {1, 2, 3, 4, 5};
+        assertTrue(UtilesArrays.estaOrdenado(array));
+    }
+
+    @Test
+    void testArrayOrdenadoDescendente() {
+        int[] array = {5, 4, 3, 2, 1};
+        assertFalse(UtilesArrays.estaOrdenado(array));
+    }
+
+    @Test
+    void testArrayDesordenado() {
+        int[] array = {3, 1, 5, 2, 4};
+        assertFalse(UtilesArrays.estaOrdenado(array));
+    }
+
+    @Test
+    void testArrayConElementosRepetidos() {
+        int[] array = {1, 2, 3, 3, 4, 5};
+        assertTrue(UtilesArrays.estaOrdenado(array));
+    }
+
+    @Test
+    void testArrayVacio() {
+        int[] array = {};
+        assertTrue(UtilesArrays.estaOrdenado(array));
+    }
+
+    @Test
+    void testArrayUnicoElemento() {
+        int[] array = {1};
+        assertTrue(UtilesArrays.estaOrdenado(array));
+    }
+
+    @Test
+    public void testConcatenarArrays() {
+        int[] array1 = {1, 2, 3};
+        int[] array2 = {4, 5, 6};
+        int[] expected = {1, 2, 3, 4, 5, 6};
+
+        int[] result = UtilesArrays.concatenarArrays(array1, array2);
+
+        assertArrayEquals(expected, result);
+    }
+    @Test
+    public void testElementosIguales() {
+        int[] array1 = {1, 2, 3};
+        int[] array2 = {1, 2, 3};
+        int posicioAComparar = 1;
+
+        boolean expected = true;
+
+        boolean result = UtilesArrays.elementosIguales(array1, array2, posicioAComparar);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testSonIguales() {
+        int[] array1 = {1, 2, 3};
+        int[] array2 = {1, 2, 3};
+
+        boolean expected = true;
+
+        boolean result = UtilesArrays.sonIguales(array1, array2);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testPartirPor() {
+        int[] array = {1, 2, 3, 4, 5, 6};
+        int posicionInicio = 2;
+        int posicionCorte = 5;
+
+        int[] expected = {3, 4, 5};
+
+        int[] result = UtilesArrays.partirPor(array, posicionInicio, posicionCorte);
+
+        assertTrue(Arrays.equals(expected, result));
+    }
 }
