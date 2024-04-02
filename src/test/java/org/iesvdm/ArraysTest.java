@@ -139,4 +139,26 @@ public class ArraysTest {
         assertArrayEquals(array, result);
     }
 
+    @Test
+    public void testEliminar() {
+        int[] array = {1, 2, 3, 4, 5};
+        int elemento = 3;
+        int[] resultadoEsperado = {1, 2, 4, 5};
+
+        int[] resultadoObtenido = UtilesArrays.eliminar(array, elemento);
+
+        assertArrayEquals(resultadoEsperado, resultadoObtenido);
+    }
+
+    @Test
+    public void testEliminarElementoNoPresente() {
+        int[] array = {1, 2, 3, 4, 5};
+        int elemento = 6;
+        int[] resultadoEsperado = {1, 2, 3, 4, 5};
+
+        int[] resultadoObtenido = UtilesArrays.eliminar(array, elemento);
+
+        assertArrayEquals(resultadoEsperado, resultadoObtenido);
+    }
+
 }
