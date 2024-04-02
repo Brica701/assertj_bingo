@@ -2,7 +2,7 @@ package org.iesvdm;
 
 import java.util.Arrays;
 
-public class UtilesArrays {
+public class  UtilesArrays {
 
     /**
      * Devuelve un array vacío
